@@ -1,0 +1,11 @@
+{
+    "name": "desi/todolist",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Desiree",
+            "email": "desireesanchezdev@gmail.com"
+        }
+    ],
+    "require": {}
+}
