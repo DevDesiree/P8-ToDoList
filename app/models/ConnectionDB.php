@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-require "./config/server.php";
+include_once "./config/server.php";
 
 class ConnectionDB
 {
