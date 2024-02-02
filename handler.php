@@ -9,7 +9,7 @@ include_once "./config/server.php";
 $tasksModel = new TodoListModel();
 $todoListController = new TodoListController($tasksModel);
 
-$tasksModel = $todoListController->index();
+
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_POST['title']) && (isset($_POST['descripcion']))) {
@@ -25,8 +25,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         echo $result;
     } elseif (isset($_POST['delete'])) {
         $id = $_POST['id'];
+        $result = $todoListController->destroy($id);
+        echo $result;
     } else {
         echo "Acción no reconocida";
     }
     header("location: index.php");
 }
+
+$tasksModel = $todoListController->index();
