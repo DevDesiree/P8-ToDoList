@@ -1,0 +1,18 @@
+body {
+  font-family: Arial, sans-serif;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-body{
+  box-shadow: 3px 2px 2px black;
+}
+
+.tasks_list{
+  text-align: center;
+}
