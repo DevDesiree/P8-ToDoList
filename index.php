@@ -37,22 +37,19 @@ include "./handler.php";
     </div>
 
     <div class="card">
-        <?php
-        foreach ($tasksModel as $task) {
-
-            echo "<div class='card-body'>";
-            echo "<h3 class='card-title'>{$task['title']}</h3>";
-            echo "<p class='card-text'>{$task['descripcion']}</p>";
-            echo "<form method='POST' action='./handler.php'>";
-            echo "<input type='hidden' name='id' value='{$task['id']}'>";
-            echo "<button class='btn btn-warning'>Editar</button>";
-            echo "<button type='submit' class='btn btn-danger' name='delete'>Borrar</button>";
-            echo "</form>";
-            echo "</div>";
-        }
-        ?>
-    </div>
-
+            <?php foreach ($tasksModel as $task) : ?>
+                <div class='card-body'>
+                    <h3 class='card-title'><?= $task['title'] ?></h3>
+                    <span><?= $task['id'] ?></span>
+                    <p class='card-text'><?= $task['descripcion'] ?></p>
+                    <form method='POST' action='./handler.php'>
+                        <input type='hidden' name='id' value='<?= $task['id'] ?>'>
+                        <button class='btn btn-warning' type='button' onclick="editTask(<?= $task['id'] ?>)">Editar</button>
+                        <button type='submit' class='btn btn-danger' name='delete'>Borrar</button>
+                    </form>
+                </div>
+            <?php endforeach; ?>
+        </div>
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
