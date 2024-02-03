@@ -38,6 +38,14 @@ class TodoListModel
         return $statement->fetchAll(\PDO::FETCH_ASSOC);
     }
 
+    public function getDataById($id)
+    {
+        $query = "SELECT * FROM tasks WHERE id = ?";
+        $statement = $this->connection->getConnection()->prepare($query);
+        $statement->execute([$id]);
+        return $statement->fetch(\PDO::FETCH_ASSOC);
+    }
+
     public function create($data)
     {
         try {
@@ -49,8 +57,15 @@ class TodoListModel
         }
     }
 
-    public function update($id, $data)
+    public function update( $data)
     {
+        try {
+            $query = "UPDATE tasks SET title = ?, descripcion = ? WHERE id = ?";
+            $statement = $this->connection->getConnection()->prepare($query);
+            return $statement->execute([$data['title'], $data['descripcion'], $data['id']]);
+        } catch (Exception $e) {
+            echo "Ha ocurrido un error:" . $e->getMessage();
+        }
     }
 
     public function delete($id)
@@ -58,6 +73,5 @@ class TodoListModel
         $query = "DELETE FROM tasks WHERE id = ?";
         $statement = $this->connection->getConnection()->prepare($query);
         return $statement->execute([$id]);
-
     }
 }
