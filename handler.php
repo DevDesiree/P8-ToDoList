@@ -6,31 +6,39 @@ use App\Models\TodoListModel;
 require_once 'vendor/autoload.php';
 include_once "./config/server.php";
 
-$tasksModel = new TodoListModel();
-$todoListController = new TodoListController($tasksModel);
+$todoListModel = new TodoListModel();
+$todoListController = new TodoListController($todoListModel);
 
 
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    if (isset($_POST['title']) && (isset($_POST['descripcion']))) {
+
+    if ($_POST['titleEdit'] && $_POST['descripcionEdit']) {
+        $id = $_POST['id'];
+        $data = [
+            'title' => $_POST['titleEdit'],
+            'descripcion' => $_POST['descripcionEdit'],
+        ];
+        $result = $todoListController->update($id, $data);
+        header("location: index.php");
+    } elseif (isset($_POST['title']) && (isset($_POST['descripcion']))) {
         $data = [
             'title' => $_POST['title'],
             'descripcion' => $_POST['descripcion'],
         ];
         $result = $todoListController->create($data);
-        echo $result;
-    } elseif (isset($_POST['update'])) {
+        header("location: index.php");
+    } elseif (isset($_POST['edit'])) {
         $id = $_POST['id'];
-        $result = $todoListController->update($id, $data);
-        echo $result;
+        $editedTask = $todoListController->edit($id);
+        include "app/views/editView.php";
     } elseif (isset($_POST['delete'])) {
         $id = $_POST['id'];
         $result = $todoListController->destroy($id);
-        echo $result;
+        header("location: index.php");
     } else {
         echo "Acción no reconocida";
     }
-    header("location: index.php");
 }
 
 $tasksModel = $todoListController->index();
