@@ -46,7 +46,7 @@ class TodoListModel
         return $statement->fetch(\PDO::FETCH_ASSOC);
     }
 
-    public function create($data)
+    public function createData($data)
     {
         try {
             $query = "INSERT INTO tasks (id, title, descripcion) VALUES (?, ?, ?)";
@@ -57,7 +57,7 @@ class TodoListModel
         }
     }
 
-    public function update( $data)
+    public function updateData( $data)
     {
         try {
             $query = "UPDATE tasks SET title = ?, descripcion = ? WHERE id = ?";
@@ -68,7 +68,7 @@ class TodoListModel
         }
     }
 
-    public function delete($id)
+    public function deleteData($id)
     {
         $query = "DELETE FROM tasks WHERE id = ?";
         $statement = $this->connection->getConnection()->prepare($query);

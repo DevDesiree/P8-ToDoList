@@ -10,7 +10,6 @@ $todoListModel = new TodoListModel();
 $todoListController = new TodoListController($todoListModel);
 
 
-
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     if ($_POST['titleEdit'] && $_POST['descripcionEdit']) {

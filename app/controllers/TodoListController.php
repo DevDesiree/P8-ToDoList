@@ -27,7 +27,7 @@ class TodoListController
 
     public function create($data)
     {
-        $results = $this->todoListModel->create($data);
+        $results = $this->todoListModel->createData($data);
 
         if ($results) {
             return "La tarea se ha añadido correctamente.";
@@ -49,7 +49,7 @@ class TodoListController
     public function update($id, $data)
     {
         $data['id'] = $id;
-        $result = $this->todoListModel->update($data);
+        $result = $this->todoListModel->updateData($data);
 
         if ($result) {
             return "La tarea se ha actualizado correctamente.";
@@ -60,7 +60,7 @@ class TodoListController
 
     public function destroy($id)
     {
-        $results = $this->todoListModel->delete($id);
+        $results = $this->todoListModel->deleteData($id);
         if ($results) {
             return "La tarea se ha borrado correctamente.";
         } else {
