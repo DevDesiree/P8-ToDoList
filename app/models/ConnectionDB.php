@@ -27,7 +27,6 @@ class ConnectionDB
         try {
             $this->connection = new \PDO("mysql:host=$this->server;dbname=$this->database", $this->username, $this->password);
             $this->connection->prepare("SET NAMES 'utf8'");
-            echo "Se establecio conexión";
         } catch (\PDOException $e) {
             echo "No se pudo obtener conexión con la Base de Datos" . $e->getMessage();
         }
