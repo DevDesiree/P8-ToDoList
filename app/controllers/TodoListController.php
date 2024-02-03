@@ -4,16 +4,9 @@ namespace App\Controllers;
 
 
 use App\Models\TodoListModel;
-use Exception;
 
 class TodoListController
 {
-
-    // private $server;
-    // private $username;
-    // private $password;
-    // private $database;
-    // private $connection;
     private $todoListModel;
 
 
@@ -27,11 +20,7 @@ class TodoListController
 
     public function index()
     {
-        // $result = $this->connection->getConnection()->query("SELECT * FROM tasks");
-        // return $result->fetch(\PDO::FETCH_ASSOC);
-
         $results = $this->todoListModel->getAllData();
-
         return $results;
     }
 
@@ -53,10 +42,20 @@ class TodoListController
 
     public function edit($id)
     {
+        $result = $this->todoListModel->getDataById($id);
+        return $result;
     }
 
-    public function update($id)
+    public function update($id, $data)
     {
+        $data['id'] = $id;
+        $result = $this->todoListModel->update($data);
+
+        if ($result) {
+            return "La tarea se ha actualizado correctamente.";
+        } else {
+            return "Error al actualizar la tarea. Por favor, inténtalo de nuevo.";
+        }
     }
 
     public function destroy($id)
