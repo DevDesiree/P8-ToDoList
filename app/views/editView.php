@@ -5,6 +5,7 @@ include "./app/views/inc/header.php";
 <main>
     <div class="container-sm">
         <form method='POST' action='./handler.php'>
+            <h2>Editar Nota</h2>
             <input type='hidden' name='id' value='<?= $editedTask['id'] ?>'>
             <div class="form-group">
                 <label for="titleEdit">Titulo</label>

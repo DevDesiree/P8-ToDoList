@@ -1,5 +1,10 @@
 body {
   font-family: Arial, sans-serif;
+
+}
+
+h2{
+  text-align: center;
 }
 
 .card {
@@ -15,4 +20,9 @@ body {
 
 .tasks_list{
   text-align: center;
+}
+
+.completed-task {
+  text-decoration: line-through;
+  opacity: 0.6; 
 }
