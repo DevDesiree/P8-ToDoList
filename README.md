@@ -50,7 +50,7 @@ Proyecto 8 Individual del Bootcamp FemCoders 😍
 ## 💻 Tecnologías Utilizadas
 <p align="center">
   <a href="https://skillicons.dev">
-    <img src="https://skillicons.dev/icons?i=html,css,php,git,github" />
+    <img src="https://skillicons.dev/icons?i=html,css,bootstrap,php,git,github,mysql" />
   </a>
 
 ## 👩‍💻 Autora
