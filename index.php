@@ -11,8 +11,8 @@ include "./app/views/inc/header.php";
             <form action="./handler.php" method="POST">
                 <h2>Crear Nueva Tarea</h2>
                 <div class="form-group">
-                    <label for="title">Título</label>
-                    <input type="text" class="form-control" id="title" name="title" placeholder="Escribe el título de tu tarea">
+                    <label for="title">Título*</label>
+                    <input type="text" class="form-control" id="title" name="title" placeholder="Escribe el título de tu tarea. (Este campo es obligatorio)" required>
                 </div>
                 <div class="form-group">
                     <label for="description">Descripción</label>
@@ -21,6 +21,7 @@ include "./app/views/inc/header.php";
                 <button type="submit" class="btn btn-primary">Crear Tarea</button>
             </form>
         </div>
+
         <div class="tasks_list">
             <h2>Lista de Tareas</h2>
         </div>
