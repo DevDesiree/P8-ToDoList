@@ -1,7 +1,7 @@
 
 <footer class="bg-dark text-light py-3">
     <div class="container text-center">
-        <p>Proyecto FemCoders <3 Copyright 2024</p>
+        <p>Proyecto FemCoders 💜 Copyright 2024</p>
     </div>
 </footer>
 
