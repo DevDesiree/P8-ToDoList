@@ -24,22 +24,45 @@ include "./app/views/inc/header.php";
             <h2>Lista de Tareas</h2>
         </div>
 
-        <div class="card">
-            <?php foreach ($tasksModel as $task) : ?>
-                <div class='card-body <?= $task['completed'] ? 'completed_task' : '' ?>'>
-                    <h3 class='card-title'><?= $task['title'] ?></h3>
-                    <span><?= $task['id'] ?></span>
-                    <p class='card-text'><?= $task['descripcion'] ?></p>
-                    <form method='POST' action='./handler.php'>
-                        <input type="hidden" name="action" value="complete">
-                        <input type="checkbox" name="completed" <?= $task['completed'] ? 'checked' : '' ?> onchange="this.form.submit()">
-                        <input type='hidden' name='id' value='<?= $task['id'] ?>'>
-                        <button class='btn btn-warning' type='submit' name='edit'>Editar</button>
-                        <button type='submit' class='btn btn-danger' name='delete'>Borrar</button>
-                    </form>
-                </div>
-            <?php endforeach; ?>
-        </div>
+        <a href="?filter=all">Mostrar Todas</a>
+        <a href="?filter=completed">Completadas</a>
+        <a href="?filter=not_completed">No Completadas</a>
+
+        <table class="table table-dark table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Titulo</th>
+                    <th>Descripcion</th>
+                    <th>Creación</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($tasksModel as $task) : ?>
+                    <tr class="<?= $task['completed'] ? 'completed_task' : '' ?>">
+                        <td><?= $task['id'] ?></td>
+                        <td><?= $task['title'] ?></td>
+                        <td><?= $task['descripcion'] ?></td>
+                        <td><?= $task['creation_date'] ?></td>
+                        <td><?= $task['completed'] ? 'Completado' : 'Por Completar' ?></td>
+                        <td>
+                            <form method='POST' action='./handler.php' class="form_edit">
+                                <input type="hidden" name="action" value="complete">
+                                <input type="checkbox" class="form-check-input" name="completed" <?= $task['completed'] ? 'checked' : '' ?> onchange="this.form.submit()">
+                                <input type='hidden' name='id' value='<?= $task['id'] ?>'>
+                                <button class='btn btn-warning' type='submit' name='edit'>Editar</button>
+                                <button type='submit' class='btn btn-danger' name='delete'>Borrar</button>
+                            </form>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+
+
+
     </main>
 
     <?php

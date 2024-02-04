@@ -1,28 +1,40 @@
 body {
   font-family: Arial, sans-serif;
-
-}
-
-h2{
-  text-align: center;
-}
-
-.card {
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
 }
 
-.card-body{
-  box-shadow: 3px 2px 2px black;
+main {
+  background-color: rgb(53, 48, 48);
+  color: white;
+  flex: 1;
 }
 
-.tasks_list{
+h2 {
   text-align: center;
+}
+
+.tasks_list {
+  text-align: center;
+}
+
+.form_edit {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.creation_date {
+  font-size: 10px;
 }
 
 .completed_task {
   text-decoration: line-through;
-  opacity: 0.6; 
+  opacity: 0.6;
+}
+
+.form-check-input {
+  padding: 15px;
+  margin: 0;
 }
