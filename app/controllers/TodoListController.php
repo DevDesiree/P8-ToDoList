@@ -10,9 +10,9 @@ class TodoListController
     private $todoListModel;
 
 
-    public function __construct(TodoListModel $todoListModel)
+    public function __construct()
     {
-        $this->todoListModel = $todoListModel;
+        $this->todoListModel = new TodoListModel;
     }
 
 
@@ -29,10 +29,6 @@ class TodoListController
         $results = $this->todoListModel->createData($data);
         
         return $results;
-    }
-
-    public function store()
-    {
     }
 
     public function edit($id)
