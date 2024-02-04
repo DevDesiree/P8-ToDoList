@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace Database;
 
 include_once "./config/server.php";
 

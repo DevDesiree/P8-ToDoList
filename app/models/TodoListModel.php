@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models;
+use Database\ConnectionDB;
 
 use Exception;
 
