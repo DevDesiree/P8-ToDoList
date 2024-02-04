@@ -8,8 +8,8 @@ include "./app/views/inc/header.php";
             <h2>Editar Tarea</h2>
             <input type='hidden' name='id' value='<?= $editedTask['id'] ?>'>
             <div class="form-group">
-                <label for="titleEdit">Título</label>
-                <input type="text" class="form-control" id="titleEdit" name="titleEdit" value="<?= $editedTask['title'] ?>">
+                <label for="titleEdit">Título*</label>
+                <input type="text" class="form-control" id="titleEdit" name="titleEdit" value="<?= $editedTask['title'] ?>" placeholder="Campo obligatorio" required>
             </div>
             <div class="form-group">
                 <label for="descripcionEdit">Descripción</label>
