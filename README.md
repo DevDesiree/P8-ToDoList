@@ -12,7 +12,7 @@ Proyecto 8 Individual del Bootcamp FemCoders 😍
 
 ## 📄 Descripción
 
-Proyecto pedagógico que implementa un gestor de tareas (To-Do List) en PHP. Permite a los usuarios agregar, editar, marcar como completadas y eliminar tareas de su lista.
+Proyecto pedagógico que implementa un gestor de tareas (To-Do List) en PHP. Permite a los usuarios agregar, editar, marcar como completadas, filtrarlas y eliminar tareas de su lista.
 
 ## 📚 Instalación
 1. Clona el repositorio:
