@@ -6,28 +6,12 @@ use Exception;
 
 class TodoListModel
 {
-    private $server;
-    private $username;
-    private $password;
-    private $database;
-
     private $connection;
 
     public function __construct()
     {
 
-        $this->server = DB_SERVER;
-        $this->username = DB_USER;
-        $this->password = DB_PASSWORD;
-        $this->database = DB_NAME;
-
-        $this->connection = new ConnectionDB(
-            $this->server,
-            $this->username,
-            $this->password,
-            $this->database
-        );
-
+        $this->connection = new ConnectionDB;
         $this->connection->connection();
     }
 
@@ -57,7 +41,7 @@ class TodoListModel
         }
     }
 
-    public function updateData( $data)
+    public function updateData($data)
     {
         try {
             $query = "UPDATE tasks SET title = ?, descripcion = ? WHERE id = ?";
@@ -74,4 +58,21 @@ class TodoListModel
         $statement = $this->connection->getConnection()->prepare($query);
         return $statement->execute([$id]);
     }
+
+    public function markAsCompleted($id)
+    {
+        $query = "UPDATE tasks SET completed = 1 WHERE id = ?";
+        $statement = $this->connection->getConnection()->prepare($query);
+        return $statement->execute([$id]);
+    }
+
+    public function markAsNotCompleted($id)
+    
+    {   
+        $query = "UPDATE tasks SET completed = 0 WHERE id = ?";
+        $statement = $this->connection->getConnection()->prepare($query);
+        return $statement->execute([$id]);
+    }
+
+
 }
