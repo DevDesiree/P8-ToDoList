@@ -22,7 +22,7 @@ h2{
   text-align: center;
 }
 
-.completed-task {
+.completed_task {
   text-decoration: line-through;
   opacity: 0.6; 
 }

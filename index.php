@@ -26,11 +26,13 @@ include "./app/views/inc/header.php";
 
         <div class="card">
             <?php foreach ($tasksModel as $task) : ?>
-                <div class='card-body'>
+                <div class='card-body <?= $task['completed'] ? 'completed_task' : '' ?>'>
                     <h3 class='card-title'><?= $task['title'] ?></h3>
                     <span><?= $task['id'] ?></span>
                     <p class='card-text'><?= $task['descripcion'] ?></p>
                     <form method='POST' action='./handler.php'>
+                        <input type="hidden" name="action" value="complete">
+                        <input type="checkbox" name="completed" <?= $task['completed'] ? 'checked' : '' ?> onchange="this.form.submit()">
                         <input type='hidden' name='id' value='<?= $task['id'] ?>'>
                         <button class='btn btn-warning' type='submit' name='edit'>Editar</button>
                         <button type='submit' class='btn btn-danger' name='delete'>Borrar</button>
@@ -40,6 +42,6 @@ include "./app/views/inc/header.php";
         </div>
     </main>
 
-<?php
-include "./app/views/inc/footer.php";
-?>
+    <?php
+    include "./app/views/inc/footer.php";
+    ?>
