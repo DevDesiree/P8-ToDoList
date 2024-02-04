@@ -1,0 +1,17 @@
+{
+    "name": "desi/todolist",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Desiree",
+            "email": "desireesanchezdev@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/",
+            "Database\\": "database/"
+        }
+    },
+    "require": {}
+}
