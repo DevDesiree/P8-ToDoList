@@ -12,28 +12,23 @@ class TodoListController
 
     public function __construct(TodoListModel $todoListModel)
     {
-
         $this->todoListModel = $todoListModel;
     }
 
 
-
     public function index()
     {
-        $results = $this->todoListModel->getAllData();
+        $filter = isset($_GET['filter']) ? $_GET['filter'] : null;
+        $results = $this->todoListModel->getAllData($filter);
         return $results;
     }
 
 
     public function create($data)
-    {
+    {   
         $results = $this->todoListModel->createData($data);
-
-        if ($results) {
-            return "La tarea se ha añadido correctamente.";
-        } else {
-            return "Error al añadir la tarea. Por favor, inténtalo de nuevo.";
-        }
+        
+        return $results;
     }
 
     public function store()
@@ -50,30 +45,21 @@ class TodoListController
     {
         $data['id'] = $id;
         $result = $this->todoListModel->updateData($data);
-
-        if ($result) {
-            return "La tarea se ha actualizado correctamente.";
-        } else {
-            return "Error al actualizar la tarea. Por favor, inténtalo de nuevo.";
-        }
+        return $result;
     }
 
     public function destroy($id)
     {
         $results = $this->todoListModel->deleteData($id);
-        if ($results) {
-            return "La tarea se ha borrado correctamente.";
-        } else {
-            return "Error al borrar la tarea Por favor, inténtalo de nuevo.";
-        }
+        return $results;
     }
 
-    public function markAsCompleted($id)
+    public function markedTask($id)
     {
         return $this->todoListModel->markAsCompleted($id);
     }
 
-    public function markAsNotCompleted($id)
+    public function notMarkedTask($id)
     {
         return $this->todoListModel->markAsNotCompleted($id);
     }
