@@ -67,4 +67,15 @@ class TodoListController
             return "Error al borrar la tarea Por favor, inténtalo de nuevo.";
         }
     }
+
+    public function markAsCompleted($id)
+    {
+        return $this->todoListModel->markAsCompleted($id);
+    }
+
+    public function markAsNotCompleted($id)
+    {
+        return $this->todoListModel->markAsNotCompleted($id);
+    }
+
 }

@@ -11,8 +11,7 @@ $todoListController = new TodoListController($todoListModel);
 
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-
-    if ($_POST['titleEdit'] && $_POST['descripcionEdit']) {
+    if (isset($_POST['titleEdit']) && isset($_POST['descripcionEdit'])) {
         $id = $_POST['id'];
         $data = [
             'title' => $_POST['titleEdit'],
@@ -20,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         ];
         $result = $todoListController->update($id, $data);
         header("location: index.php");
-    } elseif (isset($_POST['title']) && (isset($_POST['descripcion']))) {
+    } elseif (isset($_POST['title']) && isset($_POST['descripcion'])) {
         $data = [
             'title' => $_POST['title'],
             'descripcion' => $_POST['descripcion'],
@@ -34,6 +33,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     } elseif (isset($_POST['delete'])) {
         $id = $_POST['id'];
         $result = $todoListController->destroy($id);
+        header("location: index.php");
+    } elseif ($_POST['action'] == 'complete') {
+        $id = $_POST['id'];
+        $completed = isset($_POST['completed']) ? 1 : 0;
+
+        if ($completed) {
+            $todoListController->markAsCompleted($id);
+        } else {
+            $todoListController->markAsNotCompleted($id);
+        }
+
         header("location: index.php");
     } else {
         echo "Acción no reconocida";
