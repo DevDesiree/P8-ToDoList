@@ -39,9 +39,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $completed = isset($_POST['completed']) ? 1 : 0;
 
         if ($completed) {
-            $todoListController->markAsCompleted($id);
+            $todoListController->markedTask($id);
         } else {
-            $todoListController->markAsNotCompleted($id);
+            $todoListController->notMarkedTask($id);
         }
 
         header("location: index.php");
